@@ -1,3 +1,4 @@
+   
 <?php
 echo "KENNY'S DEMO CALCULATOR\n";
 echo "-----------------------\n";
