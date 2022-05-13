@@ -1,3 +1,5 @@
+
+
 <?php
     require "todoHandler.php";
     $newTodo = new Todo("todo.json");
@@ -98,7 +100,14 @@
       border-width: 0.1em;
       float: right;
       background-color: #b1b1b18f;
-      f
+    }
+    .todo-button {
+      padding: 0.2em;
+      border-radius: 0.2em;
+      border-width: 0.1em;
+      float: right;
+      background-color: #fb05058f;
+      border-color: #fb05058f;
     }
   </style>
 </head>
@@ -112,20 +121,21 @@
     <ul class="todos" id="todos">
       <?php foreach ($todoList as $todo) : ?>
         <?php foreach ($todo as $title => $value) : ?>
-            <li class="complete">
-          <a href="/markcompleted.php">
+          <li class="complete">
+            <input type = "checkbox" checked>
             <?php echo $todo[$title] ?>
-          </a>
-        </li>
+            <button type="submit" class="todo-button">Delete</button>
+          </li>
         <?php endforeach; ?>
       <?php endforeach; ?> 
     </ul>
   </form>
-  <small>Left click to toggle completed <br> Right click to delete todo</small>
+  <small>We are happy to have you use the app <br> </small>
   <?php
   
-  if (isset($_POST)){
+  if ((isset($_POST)) and ($_POST != null)){
         $newTodo->AddTodo($_POST["title"]);
+        header("location: Promotion_task2");
     }
   ?>
 
