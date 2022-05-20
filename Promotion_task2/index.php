@@ -1,12 +1,3 @@
-
-
-<?php
-    require "todoHandler.php";
-    $newTodo = new Todo("todo.json");
-    $todoList = $newTodo->GetTodos();
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,18 +110,26 @@
     <button type="submit" class="add-button">Add Todo</button>
 
     <ul class="todos" id="todos">
+      
+      <?php
+          require "todoHandler.php";
+          $newTodo = new Todo("todo.json");
+          $todoList = $newTodo->GetTodos();
+      ?>
+      <?php if ($todoList != null){?>
       <?php foreach ($todoList as $todo) : ?>
         <?php foreach ($todo as $title => $value) : ?>
           <li class="complete">
             <input type = "checkbox" checked>
-            <?php echo $todo[$title] ?>
+            <?php echo $value; ?>
             <button type="submit" class="todo-button">Delete</button>
           </li>
         <?php endforeach; ?>
-      <?php endforeach; ?> 
+      <?php endforeach; 
+       } ?>
     </ul>
   </form>
-  <small>We are happy to have you use the app <br> </small>
+  <small>We are happy to have you use the app <br> No subscription, no payment method required</small>
   <?php
   
   if ((isset($_POST)) and ($_POST != null)){
